@@ -5,76 +5,136 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Futebol - O Esporte Rei</title>
     <style>
-        
+        :root {
+            --bg-color: #f4f9f4;
+            --text-color: #2c3e50;
+            --card-bg: #ffffff;
+            --header-bg: #1b4332;
+            --header-text: #ffffff;
+            --accent-color: #2d6a4f;
+            --btn-bg: #40916c;
+            --btn-hover: #2d6a4f;
+            --box-bg: #d8f3dc;
+            --box-text: #1b4332;
+            --shadow: rgba(0, 0, 0, 0.1);
+        }
+
+        [data-theme="dark"] {
+            --bg-color: #121814;
+            --text-color: #e0e6ed;
+            --card-bg: #1e2621;
+            --header-bg: #0d2318;
+            --header-text: #e0e6ed;
+            --accent-color: #52b788;
+            --btn-bg: #2d6a4f;
+            --btn-hover: #40916c;
+            --box-bg: #1b4332;
+            --box-text: #d8f3dc;
+            --shadow: rgba(0, 0, 0, 0.5);
+        }
+
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            transition: background-color 0.3s, color 0.3s;
         }
 
         body {
-            background-color: #f4f9f4;
-            color: #2c3e50;
+            background-color: var(--bg-color);
+            color: var(--text-color);
             line-height: 1.6;
             padding-bottom: 40px;
         }
 
         header {
-            background-color: #1b4332;
-            color: #ffffff;
+            background-color: var(--header-bg);
+            color: var(--header-text);
             text-align: center;
-            padding: 2rem 1rem;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            padding: 2.5rem 1rem;
+            box-shadow: 0 4px 6px var(--shadow);
+            position: relative;
         }
 
         header h1 {
-            font-size: 2.2rem;
+            font-size: 2.5rem;
             margin-bottom: 0.5rem;
         }
 
-    
+        .theme-toggle {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: transparent;
+            border: 2px solid var(--header-text);
+            color: var(--header-text);
+            padding: 6px 12px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.85rem;
+        }
+
         .container {
             max-width: 800px;
             margin: 20px auto;
             padding: 0 20px;
         }
 
-
         .hero-img {
             width: 100%;
             height: 350px;
             object-fit: cover;
             border-radius: 12px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            box-shadow: 0 4px 10px var(--shadow);
             margin-bottom: 20px;
         }
         
         .card {
-            background: #ffffff;
-            padding: 20px;
+            background: var(--card-bg);
+            padding: 24px;
             border-radius: 10px;
             margin-bottom: 20px;
-            border-left: 5px solid #2d6a4f;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            border-left: 5px solid var(--accent-color);
+            box-shadow: 0 2px 5px var(--shadow);
         }
 
         .card h2 {
-            color: #2d6a4f;
-            margin-bottom: 10px;
+            color: var(--accent-color);
+            margin-bottom: 12px;
         }
 
+        .grid-records {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .record-item {
+            background: var(--bg-color);
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid var(--shadow);
+        }
+
+        .record-item strong {
+            display: block;
+            font-size: 1.2rem;
+            color: var(--accent-color);
+        }
 
         .interactive-section {
             display: flex;
             flex-wrap: wrap;
             gap: 15px;
             justify-content: center;
-            margin-top: 20px;
+            margin-top: 15px;
         }
 
-        button {
-            background-color: #40916c;
+        button.btn-action {
+            background-color: var(--btn-bg);
             color: white;
             border: none;
             padding: 12px 20px;
@@ -85,20 +145,18 @@
             font-weight: bold;
         }
 
-        button:hover {
-            background-color: #2d6a4f;
+        button.btn-action:hover {
+            background-color: var(--btn-hover);
             transform: translateY(-2px);
         }
 
-        button:active {
+        button.btn-action:active {
             transform: translateY(0);
         }
 
-    
         .curiosity-box {
-            display: none;
-            background-color: #d8f3dc;
-            color: #1b4332;
+            background-color: var(--box-bg);
+            color: var(--box-text);
             padding: 15px;
             border-radius: 8px;
             margin-top: 15px;
@@ -106,19 +164,11 @@
             font-weight: 500;
         }
 
-        .score-board {
-            font-size: 1.2rem;
-            font-weight: bold;
-            color: #1b4332;
-            text-align: center;
-            margin-top: 10px;
-        }
-
-
         footer {
             text-align: center;
-            margin-top: 30px;
-            color: #777;
+            margin-top: 40px;
+            color: var(--text-color);
+            opacity: 0.8;
             font-size: 0.9rem;
         }
     </style>
@@ -126,19 +176,16 @@
 <body>
 
     <header>
+        <button class="theme-toggle" onclick="toggleTheme()" id="themeBtn">🌙 Modo Escuro</button>
         <h1>Futebol - O Esporte Rei</h1>
         <p>A paixão que une bilhões de pessoas ao redor do planeta.</p>
     </header>
 
-
     <div class="container">
-        
-
         <img class="hero-img" 
              src="https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=800&q=80" 
              alt="Bola de futebol no gramado">
 
-    
         <div class="card">
             <h2>História Curta</h2>
             <p>O futebol moderno nasceu na Inglaterra em 1863, quando as primeiras regras oficiais foram estabelecidas. Desde então, ele evoluiu para se tornar o esporte mais praticado e assistido no mundo todo.</p>
@@ -149,49 +196,69 @@
             <p>Duas equipes de 11 jogadores se enfrentam em um campo gramado. O objetivo principal é colocar a bola dentro da baliza (gol) do adversário, usando qualquer parte do corpo, exceto os braços e as mãos (com exceção do goleiro).</p>
         </div>
 
+        <div class="card">
+            <h2>Recordes Históricos</h2>
+            <div class="grid-records">
+                <div class="record-item">
+                    <strong>5 Títulos</strong>
+                    Brasil, o maior campeão das Copas do Mundo.
+                </div>
+                <div class="record-item">
+                    <strong>1283 Gols</strong>
+                    Marca histórica atribuída ao Rei Pelé.
+                </div>
+                <div class="record-item">
+                    <strong>16 Gols</strong>
+                    Miroslav Klose, maior artilheiro em Copas.
+                </div>
+            </div>
+        </div>
+
         <div class="card" style="text-align: center;">
-            <h2>Interaja com a Página</h2>
+            <h2>Área Interativa</h2>
             
             <div class="interactive-section">
-                
-                <button onclick="toggleCuriosidade()">Mostrar Curiosidade</button>
-
-                <button onclick="marcarGol()">⚽ Marcar Gol!</button>
-
-                <button id="btnCurtir" onclick="curtirPagina()">👍 Curtir (0)</button>
+                <button class="btn-action" onclick="novaCuriosidade()">💡 Nova Curiosidade</button>
+                <button class="btn-action" id="btnCurtir" onclick="curtirPagina()">👍 Curtir (0)</button>
             </div>
 
             <div id="caixaCuriosidade" class="curiosity-box">
-                💡 <strong>Você sabia?</strong> A Copa do Mundo de 1930, no Uruguai, foi a primeira da história e teve apenas 13 seleções participantes!
-            </div>
-
-            <div class="score-board">
-                Placar do Jogo: <span id="contadorGols">0</span> Gol(s)
+                💡 Clique no botão acima para ver uma curiosidade sobre o futebol!
             </div>
         </div>
 
         <footer>
-            <p>© Página simples sobre Futebol</p>
+            <p>© Página Informativa sobre Futebol</p>
         </footer>
-
     </div>
 
     <script>
-        let gols = 0;
         let curtidas = 0;
 
-        function toggleCuriosidade() {
-            const caixa = document.getElementById('caixaCuriosidade');
-            if (caixa.style.display === 'block') {
-                caixa.style.display = 'none';
+        const curiosidades = [
+            "A Copa do Mundo de 1930, no Uruguai, foi a primeira da história e teve apenas 13 seleções participantes!",
+            "O jogo de futebol mais rápido com um gol registrado aconteceu em apenas 2.8 segundos!",
+            "A maior goleada em uma partida oficial foi de 149 a 0 no jogo AS Adema vs SO l'Emyrne em 2002.",
+            "A bola de futebol é composta por 32 painéis que representam os 32 países da Europa na época de seu design clássico.",
+            "O futebol é jogado por mais de 250 milhões de pessoas em mais de 200 países."
+        ];
+
+        function toggleTheme() {
+            const body = document.body;
+            const btn = document.getElementById('themeBtn');
+            if (body.getAttribute('data-theme') === 'dark') {
+                body.removeAttribute('data-theme');
+                btn.textContent = '🌙 Modo Escuro';
             } else {
-                caixa.style.display = 'block';
+                body.setAttribute('data-theme', 'dark');
+                btn.textContent = '☀️ Modo Claro';
             }
         }
 
-        function marcarGol() {
-            gols++;
-            document.getElementById('contadorGols').textContent = gols;
+        function novaCuriosidade() {
+            const caixa = document.getElementById('caixaCuriosidade');
+            const index = Math.floor(Math.random() * curiosidades.length);
+            caixa.innerHTML = `💡 <strong>Você sabia?</strong> ${curiosidades[index]}`;
         }
 
         function curtirPagina() {
