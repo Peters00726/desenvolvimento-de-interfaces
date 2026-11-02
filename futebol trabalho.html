@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Futebol - O Esporte Rei</title>
     <style>
-        /* Estilos Globais e Limpos */
+        
         * {
             box-sizing: border-box;
             margin: 0;
@@ -20,7 +20,6 @@
             padding-bottom: 40px;
         }
 
-        /* Cabeçalho */
         header {
             background-color: #1b4332;
             color: #ffffff;
@@ -34,14 +33,14 @@
             margin-bottom: 0.5rem;
         }
 
-        /* Container Principal */
+    
         .container {
             max-width: 800px;
             margin: 20px auto;
             padding: 0 20px;
         }
 
-        /* Imagem de Destaque */
+
         .hero-img {
             width: 100%;
             height: 350px;
@@ -50,8 +49,7 @@
             box-shadow: 0 4px 10px rgba(0,0,0,0.15);
             margin-bottom: 20px;
         }
-
-        /* Seção de Conteúdo */
+        
         .card {
             background: #ffffff;
             padding: 20px;
@@ -66,7 +64,7 @@
             margin-bottom: 10px;
         }
 
-        /* Área de Botões e Interatividade */
+
         .interactive-section {
             display: flex;
             flex-wrap: wrap;
@@ -96,7 +94,7 @@
             transform: translateY(0);
         }
 
-        /* Mensagens Ocultas e Placar */
+    
         .curiosity-box {
             display: none;
             background-color: #d8f3dc;
@@ -116,7 +114,7 @@
             margin-top: 10px;
         }
 
-        /* Rodapé */
+
         footer {
             text-align: center;
             margin-top: 30px;
@@ -127,53 +125,46 @@
 </head>
 <body>
 
-    <!-- Cabeçalho Simples -->
     <header>
         <h1>Futebol - O Esporte Rei</h1>
         <p>A paixão que une bilhões de pessoas ao redor do planeta.</p>
     </header>
 
-    <!-- Conteúdo Principal -->
+
     <div class="container">
         
-        <!-- Imagem Temática de Futebol -->
+
         <img class="hero-img" 
              src="https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=800&q=80" 
              alt="Bola de futebol no gramado">
 
-        <!-- Seção 1: História Curta -->
+    
         <div class="card">
             <h2>História Curta</h2>
             <p>O futebol moderno nasceu na Inglaterra em 1863, quando as primeiras regras oficiais foram estabelecidas. Desde então, ele evoluiu para se tornar o esporte mais praticado e assistido no mundo todo.</p>
         </div>
 
-        <!-- Seção 2: O Objetivo do Jogo -->
         <div class="card">
             <h2>O Objetivo do Jogo</h2>
             <p>Duas equipes de 11 jogadores se enfrentam em um campo gramado. O objetivo principal é colocar a bola dentro da baliza (gol) do adversário, usando qualquer parte do corpo, exceto os braços e as mãos (com exceção do goleiro).</p>
         </div>
 
-        <!-- Interatividades e Botões Simples -->
         <div class="card" style="text-align: center;">
             <h2>Interaja com a Página</h2>
             
             <div class="interactive-section">
-                <!-- Botão 1: Curiosidade -->
+                
                 <button onclick="toggleCuriosidade()">Mostrar Curiosidade</button>
 
-                <!-- Botão 2: Marcar Gol -->
                 <button onclick="marcarGol()">⚽ Marcar Gol!</button>
 
-                <!-- Botão 3: Curtir Página -->
                 <button id="btnCurtir" onclick="curtirPagina()">👍 Curtir (0)</button>
             </div>
 
-            <!-- Caixa para mostrar Curiosidade -->
             <div id="caixaCuriosidade" class="curiosity-box">
                 💡 <strong>Você sabia?</strong> A Copa do Mundo de 1930, no Uruguai, foi a primeira da história e teve apenas 13 seleções participantes!
             </div>
 
-            <!-- Placar de Gols -->
             <div class="score-board">
                 Placar do Jogo: <span id="contadorGols">0</span> Gol(s)
             </div>
@@ -185,13 +176,10 @@
 
     </div>
 
-    <!-- Script Simples para Interações -->
     <script>
-        // Variáveis de Controle
         let gols = 0;
         let curtidas = 0;
 
-        // 1. Mostrar/Esconder Curiosidade
         function toggleCuriosidade() {
             const caixa = document.getElementById('caixaCuriosidade');
             if (caixa.style.display === 'block') {
@@ -201,13 +189,11 @@
             }
         }
 
-        // 2. Contador de Gols Simples
         function marcarGol() {
             gols++;
             document.getElementById('contadorGols').textContent = gols;
         }
 
-        // 3. Curtir a página
         function curtirPagina() {
             curtidas++;
             document.getElementById('btnCurtir').textContent = `👍 Curtir (${curtidas})`;
