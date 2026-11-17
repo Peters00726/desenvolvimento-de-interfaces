@@ -13,3 +13,5 @@ Repositório com os exercícios práticos desenvolvidos na disciplina de Desenvo
 * **Linguagens:** HTML5 e JavaScript
 * **Editor:** Visual Studio Code (VS Code)
 * **Ambiente de Execução:** Google Chrome
+
+<img width="698" height="284" alt="image" src="https://github.com/user-attachments/assets/08c97cfa-9fd5-4927-baba-6a8e68638cf1" />
